@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[    767462,      15982]
-NotebookOptionsPosition[    764776,      15937]
-NotebookOutlinePosition[    765168,      15953]
-CellTagsIndexPosition[    765125,      15950]
+NotebookDataLength[    767815,      15990]
+NotebookOptionsPosition[    765129,      15945]
+NotebookOutlinePosition[    765521,      15961]
+CellTagsIndexPosition[    765478,      15958]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -24,15 +24,16 @@ Cell[TextData[{
  StyleBox["Author and License Information", "Subtitle",
   FontWeight->"Bold"],
  StyleBox["\n", "Author"],
- StyleBox["Author : Zoey Zhiyuan Dong\nDate : 2024 - 11 - 28\nLicense : This \
+ StyleBox["Author : Zoey Zhiyuan Dong\nDate : 2024 - 12 - 11\nLicense : This \
 code is shared under the MIT License for academic and research purposes.", 
   "Author",
   FontColor->GrayLevel[0.5]]
 }], "Subsubsection",
  CellChangeTimes->{{3.941758495957692*^9, 3.941758666377029*^9}, {
   3.941758715286351*^9, 3.941758745682198*^9}, {3.941758845183648*^9, 
-  3.941758852327133*^9}, {3.941759160180489*^9, 
-  3.941759160611671*^9}},ExpressionUUID->"bca175b1-1a73-4c3a-87d9-\
+  3.941758852327133*^9}, {3.941759160180489*^9, 3.941759160611671*^9}, {
+  3.943339323430067*^9, 
+  3.943339333553965*^9}},ExpressionUUID->"bca175b1-1a73-4c3a-87d9-\
 4450a5fa86bb"],
 
 Cell[TextData[{
@@ -95,11 +96,11 @@ sub-folder contains a series of text files named by central pressure values \
     RowBox[{"-", "2"}]], TraditionalForm]], "Subsubsection",
   FontColor->GrayLevel[0.5],ExpressionUUID->
   "7a1a2a14-0b5e-46a0-8083-efd104784a78"], "Subsubsection"],
- StyleBox["). The contents of each text file are as follows:\n\t\[Bullet]\tr \
-(data[[All, 1]]): radius (km), indicating the radial distance from the center \
-to the surface of the star.\n\t\[Bullet]\tsigmaoverpc (data[[All, 2]]): \
-Normalized anisotropy parameter , obtained through numerical solution.\n\t\
-\[Bullet]\tPr (data[[All, 3]]): Radial pressure (", "Subsubsection",
+ StyleBox["). The contents of each text file are as follows:\n\t\[Bullet]\t\
+radius(data[[All, 1]]): radius (km), indicating the radial distance from the \
+center to the surface of the star.\n\t\[Bullet]\tsigmaoverpc (data[[All, \
+2]]): Normalized anisotropy parameter , obtained through numerical solution.\n\
+\t\[Bullet]\tPr (data[[All, 3]]): Radial pressure (", "Subsubsection",
   FontColor->GrayLevel[0.5]],
  StyleBox[Cell[BoxData[
   FormBox[
@@ -108,11 +109,12 @@ Normalized anisotropy parameter , obtained through numerical solution.\n\t\
   FontColor->GrayLevel[0.5],ExpressionUUID->
   "ed91053f-ef71-4f65-a64c-1675c5bdaeac"], "Subsubsection"],
  StyleBox["), describing the radial pressure distribution as a function of \
-radius.\n\t\[Bullet]\tmovermsun (data[[All, 4]]): Mass component (in units of \
-solar Mass=1.4767291 km).\n\t\[Bullet]\trhooverrhoc (data[[All, 5]]): \
-Normalized density component , where rhoc represents the central density.\n\t\
-\[Bullet]\tzvalues (data[[All, 6]]): a dimensionless ratio that quantifies \
-the degree of anisotropy in the material.", "Subsubsection",
+radius.\n\t\[Bullet]\tmass (data[[All, 4]]): Mass component (Caution! It is \
+NOT in units of solar Mass=1.4767291 km!).\n\t\[Bullet]\trhooverrhoc \
+(data[[All, 5]]): Normalized density component , where rhoc represents the \
+central density.\n\t\[Bullet]\tzvalues (data[[All, 6]]): a dimensionless \
+ratio that quantifies the degree of anisotropy in the material.", 
+  "Subsubsection",
   FontColor->GrayLevel[0.5]],
  StyleBox["\n\nEach output file is stored in the \[OpenCurlyQuote]sigmafit\
 \[CloseCurlyQuote] folder within the main directory. File names correspond to \
@@ -156,8 +158,8 @@ Eq.(29), we use n here, and the relation between n and N is: n=N/\[Lambda]-1",
    3.940742738012699*^9}, {3.940742802452714*^9, 3.9407428482786283`*^9}, {
    3.940743177714796*^9, 3.940743289064122*^9}, {3.940743338453611*^9, 
    3.940743397380081*^9}, {3.941759198941379*^9, 3.9417592120697203`*^9}, {
-   3.941759535271467*^9, 
-   3.9417595438694963`*^9}},ExpressionUUID->"0a1ff677-220f-4534-9bc0-\
+   3.941759535271467*^9, 3.9417595438694963`*^9}, {3.9433392540347*^9, 
+   3.943339303841704*^9}},ExpressionUUID->"0a1ff677-220f-4534-9bc0-\
 694cd3919e13"],
 
 Cell[BoxData[{
@@ -212,7 +214,7 @@ Cell[BoxData[{
          RowBox[{"MatrixQ", "[", 
           RowBox[{"data", ",", "NumericQ"}], "]"}], ",", 
          RowBox[{
-          RowBox[{"r", "=", 
+          RowBox[{"radius", "=", 
            RowBox[{"data", "[", 
             RowBox[{"[", 
              RowBox[{"All", ",", "1"}], "]"}], "]"}]}], ";", 
@@ -227,7 +229,7 @@ Cell[BoxData[{
             RowBox[{"[", 
              RowBox[{"All", ",", "3"}], "]"}], "]"}]}], ";", 
           "\[IndentingNewLine]", 
-          RowBox[{"movermsun", "=", 
+          RowBox[{"mass", "=", 
            RowBox[{"data", "[", 
             RowBox[{"[", 
              RowBox[{"All", ",", "4"}], "]"}], "]"}]}], ";", 
@@ -252,7 +254,7 @@ Cell[BoxData[{
              RowBox[{"Transpose", "[", 
               RowBox[{"{", 
                RowBox[{
-               "r", ",", "movermsun", ",", "rhooverrhoc", ",", 
+               "radius", ",", "mass", ",", "rhooverrhoc", ",", 
                 "sigmaoverpc"}], "}"}], "]"}], ",", 
              RowBox[{"Lambda", " ", "m", " ", 
               RowBox[{
@@ -272,7 +274,7 @@ Cell[BoxData[{
            RowBox[{"Lambda", "/.", " ", 
             RowBox[{"fit", "[", "\"\<BestFitParameters\>\"", "]"}]}]}], ";", 
           "\[IndentingNewLine]", 
-          RowBox[{"estimatedn", "=", 
+          RowBox[{"estimatedN", "=", 
            RowBox[{"n", "/.", " ", 
             RowBox[{"fit", "[", "\"\<BestFitParameters\>\"", "]"}]}]}], ";", 
           "\[IndentingNewLine]", 
@@ -280,19 +282,19 @@ Cell[BoxData[{
            RowBox[{"\"\<lambda = \>\"", ",", "estimatedLambda"}], "]"}], ";", 
           "\[IndentingNewLine]", 
           RowBox[{"Print", "[", 
-           RowBox[{"\"\<n = \>\"", ",", "estimatedn"}], "]"}], ";", 
+           RowBox[{"\"\<n = \>\"", ",", "estimatedN"}], "]"}], ";", 
           "\[IndentingNewLine]", 
           RowBox[{"(*", "error", "*)"}], "\[IndentingNewLine]", 
           RowBox[{"fitValue", "=", 
-           RowBox[{"estimatedLambda", " ", "*", "movermsun", "*", " ", 
+           RowBox[{"estimatedLambda", " ", "*", "mass", "*", " ", 
             RowBox[{
-             RowBox[{"rhooverrhoc", "^", "estimatedn"}], "/", 
+             RowBox[{"rhooverrhoc", "^", "estimatedN"}], "/", 
              RowBox[{"(", 
-              RowBox[{"r", " ", 
+              RowBox[{"radius", " ", 
                RowBox[{"(", 
                 RowBox[{"1", "-", 
                  RowBox[{"2", " ", 
-                  RowBox[{"movermsun", "/", "r"}]}]}], ")"}]}], ")"}]}]}]}], 
+                  RowBox[{"mass", "/", "radius"}]}]}], ")"}]}], ")"}]}]}]}], 
           ";", "\[IndentingNewLine]", 
           RowBox[{"error", "=", 
            RowBox[{
@@ -322,7 +324,8 @@ Cell[BoxData[{
             RowBox[{"{", 
              RowBox[{
              "pcValue", ",", "shearValue", ",", "estimatedLambda", ",", 
-              "estimatedn"}], "}"}]}], "]"}], ";"}], ",", 
+              "estimatedN"}], "}"}]}], "]"}], ";"}], ",", 
+         RowBox[{"(*", "Else", "*)"}], 
          RowBox[{"Print", "[", 
           RowBox[{"\"\<Invalid data in file: \>\"", ",", "file"}], "]"}]}], 
         "]"}]}], ",", 
@@ -337,7 +340,11 @@ Cell[BoxData[{
          RowBox[{"numericalPart", "<>", "\"\<.txt\>\""}]}], "}"}], "]"}], ",",
        "results", ",", "\"\<Table\>\""}], "]"}], ";", "\[IndentingNewLine]", 
     RowBox[{"results", "=", 
-     RowBox[{"{", "}"}]}], ";"}], "  ", ",", 
+     RowBox[{"{", "}"}]}], ";"}], "  ", 
+   RowBox[{"(*", 
+    RowBox[{
+    "Clear", " ", "results", " ", "for", " ", "next", " ", "pc", " ", 
+     "folder", " ", "iteration"}], "*)"}], ",", 
    RowBox[{"{", 
     RowBox[{"pcFolder", ",", "pcFolders"}], "}"}]}], "]"}]}], "Input",
  CellChangeTimes->{
@@ -355,7 +362,8 @@ Cell[BoxData[{
    3.9407356556821213`*^9, 3.9407356556869707`*^9}, {3.940735692567602*^9, 
    3.940735692571059*^9}, {3.940735784939877*^9, 3.9407358106935463`*^9}, {
    3.940741469917594*^9, 3.9407416176370907`*^9}, {3.9407433120686903`*^9, 
-   3.940743312073352*^9}},ExpressionUUID->"f9597e3e-ca21-43d3-bf4d-\
+   3.940743312073352*^9}, {3.9433391061915407`*^9, 
+   3.943339164015224*^9}},ExpressionUUID->"f9597e3e-ca21-43d3-bf4d-\
 f13ed34b9330"]
 }, Open  ]],
 
@@ -15953,36 +15961,36 @@ CellTagsIndex->{}
 (*NotebookFileOutline
 Notebook[{
 Cell[CellGroupData[{
-Cell[580, 22, 608, 13, 129, "Subsubsection",ExpressionUUID->"bca175b1-1a73-4c3a-87d9-4450a5fa86bb"],
-Cell[1191, 37, 2035, 40, 130, "Text",ExpressionUUID->"ca035ec5-1495-4f63-9925-75399de78137"]
+Cell[580, 22, 657, 14, 129, "Subsubsection",ExpressionUUID->"bca175b1-1a73-4c3a-87d9-4450a5fa86bb"],
+Cell[1240, 38, 2035, 40, 130, "Text",ExpressionUUID->"ca035ec5-1495-4f63-9925-75399de78137"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[3263, 82, 3714, 78, 468, "Subsubsection",ExpressionUUID->"0a1ff677-220f-4534-9bc0-694cd3919e13"],
-Cell[6980, 162, 8325, 196, 724, "Input",ExpressionUUID->"f9597e3e-ca21-43d3-bf4d-f13ed34b9330"]
+Cell[3312, 83, 3780, 79, 468, "Subsubsection",ExpressionUUID->"0a1ff677-220f-4534-9bc0-694cd3919e13"],
+Cell[7095, 164, 8563, 202, 724, "Input",ExpressionUUID->"f9597e3e-ca21-43d3-bf4d-f13ed34b9330"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[15342, 363, 1496, 26, 467, "Subsubsection",ExpressionUUID->"94f07fe2-dc19-4007-81aa-8f4333f641a9"],
-Cell[16841, 391, 14391, 342, 1060, "Input",ExpressionUUID->"bfcd365c-9336-43e5-8a0e-772133a64abe"]
+Cell[15695, 371, 1496, 26, 467, "Subsubsection",ExpressionUUID->"94f07fe2-dc19-4007-81aa-8f4333f641a9"],
+Cell[17194, 399, 14391, 342, 1060, "Input",ExpressionUUID->"bfcd365c-9336-43e5-8a0e-772133a64abe"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[31269, 738, 1289, 23, 224, "Section",ExpressionUUID->"41e97865-45b9-476f-8b7e-84eb3af345da"],
+Cell[31622, 746, 1289, 23, 224, "Section",ExpressionUUID->"41e97865-45b9-476f-8b7e-84eb3af345da"],
 Cell[CellGroupData[{
-Cell[32583, 765, 9129, 250, 661, "Input",ExpressionUUID->"5cdbabc8-dde1-40e4-aec7-835744fd4786"],
-Cell[41715, 1017, 702, 14, 28, "Message",ExpressionUUID->"896d1072-77ca-4f17-ae03-b54ced70f900"],
-Cell[42420, 1033, 705, 14, 28, "Message",ExpressionUUID->"dfcc013b-8845-4a3d-8371-1f3fbd8c9c4c"],
-Cell[43128, 1049, 703, 14, 28, "Message",ExpressionUUID->"a0821ff4-c548-4c20-9815-c80f368a5525"],
-Cell[43834, 1065, 746, 14, 28, "Message",ExpressionUUID->"f25db608-8308-4c09-874b-c1404bc2cb5d"],
-Cell[44583, 1081, 874, 16, 46, "Message",ExpressionUUID->"c5021919-381f-437c-ac74-0b2285f6a63e"],
-Cell[45460, 1099, 876, 16, 46, "Message",ExpressionUUID->"6261b1ea-dbe0-4461-8184-2b9221394dab"],
-Cell[46339, 1117, 7903, 176, 213, "Print",ExpressionUUID->"cd1d6c53-18cc-48e3-898b-66254d85c431"],
-Cell[54245, 1295, 784, 15, 28, "Message",ExpressionUUID->"17a25fd9-0e13-4bac-9ffd-14ab69a80d3a"],
-Cell[55032, 1312, 769, 15, 28, "Message",ExpressionUUID->"a316d935-684e-4517-bdc6-291f0eab6751"],
-Cell[55804, 1329, 771, 15, 28, "Message",ExpressionUUID->"c724c8fb-e526-4bce-801e-3c091442e103"],
-Cell[56578, 1346, 736, 14, 28, "Message",ExpressionUUID->"48702260-2b9f-41d7-ba5f-c2a2913b6b92"],
-Cell[57317, 1362, 189611, 4150, 717, "Output",ExpressionUUID->"d52975ea-1471-46b8-a6e9-4ba40e742709"]
+Cell[32936, 773, 9129, 250, 661, "Input",ExpressionUUID->"5cdbabc8-dde1-40e4-aec7-835744fd4786"],
+Cell[42068, 1025, 702, 14, 28, "Message",ExpressionUUID->"896d1072-77ca-4f17-ae03-b54ced70f900"],
+Cell[42773, 1041, 705, 14, 28, "Message",ExpressionUUID->"dfcc013b-8845-4a3d-8371-1f3fbd8c9c4c"],
+Cell[43481, 1057, 703, 14, 28, "Message",ExpressionUUID->"a0821ff4-c548-4c20-9815-c80f368a5525"],
+Cell[44187, 1073, 746, 14, 28, "Message",ExpressionUUID->"f25db608-8308-4c09-874b-c1404bc2cb5d"],
+Cell[44936, 1089, 874, 16, 46, "Message",ExpressionUUID->"c5021919-381f-437c-ac74-0b2285f6a63e"],
+Cell[45813, 1107, 876, 16, 46, "Message",ExpressionUUID->"6261b1ea-dbe0-4461-8184-2b9221394dab"],
+Cell[46692, 1125, 7903, 176, 213, "Print",ExpressionUUID->"cd1d6c53-18cc-48e3-898b-66254d85c431"],
+Cell[54598, 1303, 784, 15, 28, "Message",ExpressionUUID->"17a25fd9-0e13-4bac-9ffd-14ab69a80d3a"],
+Cell[55385, 1320, 769, 15, 28, "Message",ExpressionUUID->"a316d935-684e-4517-bdc6-291f0eab6751"],
+Cell[56157, 1337, 771, 15, 28, "Message",ExpressionUUID->"c724c8fb-e526-4bce-801e-3c091442e103"],
+Cell[56931, 1354, 736, 14, 28, "Message",ExpressionUUID->"48702260-2b9f-41d7-ba5f-c2a2913b6b92"],
+Cell[57670, 1370, 189611, 4150, 717, "Output",ExpressionUUID->"d52975ea-1471-46b8-a6e9-4ba40e742709"]
 }, Open  ]],
-Cell[246943, 5515, 274809, 5540, 713, 189430, 4139, "CachedBoxData", "BoxData", "Input",ExpressionUUID->"b4b91948-05ea-437d-a608-214896a1efe4"],
-Cell[521755, 11057, 243005, 4877, 713, 161090, 3533, "CachedBoxData", "BoxData", "Input",ExpressionUUID->"102216e9-0104-4f4e-b7d0-af4323a8c703"]
+Cell[247296, 5523, 274809, 5540, 713, 189430, 4139, "CachedBoxData", "BoxData", "Input",ExpressionUUID->"b4b91948-05ea-437d-a608-214896a1efe4"],
+Cell[522108, 11065, 243005, 4877, 713, 161090, 3533, "CachedBoxData", "BoxData", "Input",ExpressionUUID->"102216e9-0104-4f4e-b7d0-af4323a8c703"]
 }, Open  ]]
 }
 ]
